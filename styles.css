@@ -11,6 +11,11 @@ html {
   min-height: 100vh;
 }
 
+body{
+  background-image: url("Assets/Images/LebronBackground.jpg");
+  background-repeat: no-repeat;
+}
+
 #bgm{
   display: none;
   }
