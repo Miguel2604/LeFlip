@@ -3,7 +3,7 @@ class AudioController {
     constructor() {
         this.flipSound = new Audio('Assets/Audio/flip.wav');
         this.matchSound = new Audio('Assets/Audio/match.wav');
-        this.victorySound = new Audio('Assets/Audio/victory.wav');
+        this.victorySound = new Audio('');
         this.gameOverSound = new Audio('Assets/Audio/gameover.wav');
     }
     
@@ -68,13 +68,16 @@ class MixOrMatch {
         this.cardToCheck = null;
     }
     cardMatch(card1, card2) {
+        
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
         card1.classList.add('matched');
         card2.classList.add('matched');
         this.audioController.match();
-        if(this.matchedCards.length === this.cardsArray.length)
-            victory(); 
+        if(this.matchedCards.length === this.cardsArray.length){
+            victory();
+        }
+            
     }
     cardMisMatch(card1, card2) {
         this.busy = true;
@@ -138,7 +141,11 @@ function ready() {
 function victory(){
 
     let victory = document.getElementById("victory-text");
+    var bgm = document.getElementById("bgm")
+    var victorySound = document.getElementById("victorysound")
     victory.classList.add('visible');
+    bgm.pause();
+    victorySound.play();
 
 }
 

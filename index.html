@@ -16,7 +16,10 @@
 
   <audio id="bgm" loop>
     <source src="Assets/Audio/LeBron James - All Of The Lights.mp3" type="audio/mp3">
-</audio>
+  </audio>
+  <audio id="victorysound"> 
+    <source src="Assets/Audio/comeonman.mp3" type="audio/mp3">
+  </audio>
   <div id="start" class="overlay-text visible">
     Click to Start
   </div>
@@ -172,11 +175,16 @@
             }
             bgm.muted = !bgm.muted;
         });
-     var overlays = document.getElementById("start");
+    var overlays = document.getElementById("start");
      
         overlays.addEventListener('click', () => {
             bgm.play();
         });
+        
+    var restart = document.getElementById("victory-text");
+        restart.addEventListener('click', function(){
+          bgm.play();
+        })
         
   </script>
 </body>
