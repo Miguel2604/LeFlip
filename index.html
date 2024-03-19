@@ -14,10 +14,10 @@
 
     <img id="mute" src="Assets/Images/SoundOn.png">
 
-  <audio id="bgm" autoplay loop>
+  <audio id="bgm" loop>
     <source src="Assets/Audio/LeBron James - All Of The Lights.mp3" type="audio/mp3">
 </audio>
-  <div class="overlay-text visible">
+  <div id="start" class="overlay-text visible">
     Click to Start
   </div>
   <div id="game-over-text" class="overlay-text">
@@ -172,7 +172,12 @@
             }
             bgm.muted = !bgm.muted;
         });
+     var overlays = document.getElementById("start");
      
+        overlays.addEventListener('click', () => {
+            bgm.play();
+        });
+        
   </script>
 </body>
 

@@ -13,14 +13,7 @@ class AudioController {
     match() {
         this.matchSound.play();
     }
-    victory() {
-        this.stopMusic();
-        this.victorySound.play();
-    }
-    gameOver() {
-        this.stopMusic();
-        this.gameOverSound.play();
-    }
+   
 }
 
 class MixOrMatch {
@@ -81,7 +74,7 @@ class MixOrMatch {
         card2.classList.add('matched');
         this.audioController.match();
         if(this.matchedCards.length === this.cardsArray.length)
-            this.victory(); 
+            victory(); 
     }
     cardMisMatch(card1, card2) {
         this.busy = true;
@@ -104,13 +97,8 @@ class MixOrMatch {
     }
     gameOver() {
         clearInterval(this.countDown);
-        this.audioController.gameOver();
+        
         document.getElementById('game-over-text').classList.add('visible');
-    }
-    victory() {
-        clearInterval(this.countDown);
-        this.audioController.victory();
-        document.getElementById('victory-text').classList.add('visible');
     }
 
     shuffleCards() {
@@ -129,7 +117,7 @@ class MixOrMatch {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MixOrMatch(100, cards);
+    let game = new MixOrMatch(2, cards);
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
@@ -146,6 +134,13 @@ function ready() {
 
 
 }   
+
+function victory(){
+
+    let victory = document.getElementById("Victory");
+    victory.classList.add('visible');
+
+}
 
 if(document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', ready());
