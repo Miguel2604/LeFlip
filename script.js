@@ -137,7 +137,7 @@ function ready() {
 
 function victory(){
 
-    let victory = document.getElementById("Victory");
+    let victory = document.getElementById("victory-text");
     victory.classList.add('visible');
 
 }
