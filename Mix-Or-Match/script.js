@@ -13,10 +13,7 @@ class AudioController {
     match() {
         this.matchSound.play();
     }
-    gameOver() {
-        this.stopMusic();
-        this.gameOverSound.play();
-    }
+   
 }
 
 class MixOrMatch {
@@ -100,7 +97,7 @@ class MixOrMatch {
     }
     gameOver() {
         clearInterval(this.countDown);
-        this.audioController.gameOver();
+        
         document.getElementById('game-over-text').classList.add('visible');
     }
 
@@ -120,7 +117,7 @@ class MixOrMatch {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MixOrMatch(100, cards);
+    let game = new MixOrMatch(2, cards);
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
