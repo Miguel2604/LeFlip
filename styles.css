@@ -21,9 +21,9 @@ body{
 
 #mute {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 999;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
 }
 
 .page-title {
@@ -165,14 +165,73 @@ body{
   transform: translateY(0)
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
+  
+  body{
+    background-image: url("Assets/Images//LeBackgroundPortrait.png");
+    background-size:cover ;
+    background-repeat: no-repeat;
+    background
+  }
+
   .game-container {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(4, auto);
   }
 
   .game-info-container {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
+
+  .page-title{
+    font-size: 60px;
+    line-height: 70px;
+  }
+
+  .game-info{
+    font-size: 50px;
+    line-height: 50px;
+    
+  }
+  
+  .card{
+  position:relative;
+  height: 140px;
+  width: 80px;
+  }
+  .overlay-text-small{
+    font-size: 50px;
+  }
+
+  .overlay-text-visible {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #FDBB30;
+    font-family: NBACavaliers, serif;
+  }
+
+  @keyframes overlay-grow {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+      font-size: 0;
+    }
+    to {
+      background-color: rgba(0, 0, 0, .8);
+      font-size: 4em;
+    }
+  }
+
+  
+
+  
+
+
 }
 
