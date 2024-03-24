@@ -17,13 +17,19 @@ class AudioController {
 }
 
 class MixOrMatch {
-    constructor(totalTime, cards) {
-        this.cardsArray = cards;
+    constructor(totalTime, cards, difficulty) {
         this.totalTime = totalTime;
-        this.timeRemaining = totalTime;
+        this.difficulty = parseInt(difficulty); 
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.audioController = new AudioController();
+        this.cardsArray = this.adjustCardsBasedOnDifficulty(cards, this.difficulty);
+        this.timeRemaining = totalTime;
+    }
+
+    adjustCardsBasedOnDifficulty(cards, difficulty) {
+        let activeCards = cards.slice(0, difficulty);
+        return activeCards;
     }
     startGame() {
         this.cardToCheck = null;
@@ -121,9 +127,10 @@ function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
     let difficulty = localStorage.getItem("difficulty") || '0'; 
-    console.log("Value =" + difficulty);
+    console.log("Value = " + difficulty);
     
-    let game = new MixOrMatch(difficulty, cards); 
+    let game = new MixOrMatch(100, cards, difficulty); 
+    console.log("Difficulty = " + (cards.length - parseInt(difficulty)));
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
