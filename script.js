@@ -28,8 +28,15 @@ class MixOrMatch {
     }
 
     adjustCardsBasedOnDifficulty(cards, difficulty) {
-        let activeCards = cards.slice(0, difficulty);
-        return activeCards;
+        let activeCardsCount = 24 - difficulty; 
+        cards.forEach((card, index) => {
+            if (index >= activeCardsCount) {
+                card.classList.add('hidden'); 
+            } else {
+                card.classList.remove('hidden'); 
+            }
+        });
+        return cards.filter((_, index) => index < activeCardsCount);
     }
     startGame() {
         this.cardToCheck = null;
