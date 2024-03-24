@@ -29,18 +29,75 @@ body{
 }
 
 #settingsdiv{
-  justify-content: center;
-  align-items: center;
+  color: white;
+  font-family: NBACavaliers, serif;
+  font-size: 4em;
+  text-align: center;
+  border-radius: 25px;
   background-image: url("Assets/Images/SettingsBG.png");
   width: 1200px;
   height: 833px;
+  z-index: 10;
+  position: absolute;
+  padding: 0;
+  margin: 0;
 }
 
-#mute{
+#easy:hover, #medium:hover, #hard:hover, #extreme:hover{
+  filter: brightness(20%);
+}
+
+#easy, #medium, #hard, #extreme{
+  position: relative;
+}
+
+#settingscontainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#diffpics{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.rows{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.opacity{
+  filter: brightness(30%);
+}
+
+.fullopacity{
+  filter: brightness(100%);
+}
+
+.settingspics{
+  width: 415px;
+  height: 234px;
+}
+
+.invisible{
+  display: none;
+}
+
+#mute, #settings{
   position: fixed;
   top: 0px;
-  right: 0px;
+  right: 50px;
   z-index: 1;
+}
+
+#settings{
+  right:0px;
 }
 
 .page-title {
@@ -183,6 +240,27 @@ body{
 }
 
 @media screen and (max-width: 600px) {
+  #settings{
+    position: fixed;
+    z-index: 1;
+  }
+  
+  #settingsdiv{
+    font-family: NBACavaliers, serif;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    border-radius: 25px;
+    background-image: url("Assets/Images/SettingsBGMobile.png");
+    width: 350px;
+    height: 243px;
+    z-index: 10;
+    position: absolute;
+  }
+  
+  .invisible{
+    display: none;
+  }
   
   body{
     background-image: url("Assets/Images//LeBackgroundPortrait.png");

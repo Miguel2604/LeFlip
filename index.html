@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="html" lang="en">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +10,9 @@
 
 <body background="\Assets\Images\LebronBackground.jpg">
 
-  </div>
   <h1 class="page-title">LeBron James Mix-and-Match</h1>
 
-    <img id="settings" src="">
+    <img id="settings" src="Assets/Images/SettingsButton.png">
     <img id="mute" src="Assets/Images/SoundOn.png">
 
   <audio id="bgm" loop>
@@ -22,9 +21,30 @@
   <audio id="victorysound"> 
     <source src="Assets/Audio/comeonman.mp3" type="audio/mp3">
   </audio>
-  <div id="settingsdiv" class="overlay-text">
-    <div>
-
+  <div id="settingsdiv" class="invisible">
+    <div id="settingscontainer">
+      <div>
+        <p>SETTINGS</p>
+        <p>CHOOSE DIFFICULTY</p>
+      </div>
+      <div id="diffpics">
+        <div class="rows">
+          <div>
+            <img id="easy" class="settingspics rows" src="Assets/Images/easy.png">
+          </div>
+          <div>
+            <img id="medium" class="settingspics rows" src="Assets/Images/medium.png">
+          </div>
+        </div>
+        <div class="rows">
+          <div>
+            <img id="hard" class="settingspics rows" src="Assets/Images/hard.png">
+          </div>
+          <div>
+            <img id="extreme" class="settingspics rows" src="Assets/Images/extreme.png">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div id="start" class="overlay-text visible">
@@ -233,6 +253,13 @@
           bgm.play();
           
         })
+
+    var body = document.getElementById("html")
+    var settings = document.getElementById("settings");
+    var settingsdiv = document.getElementById("settingsdiv");
+        settings.addEventListener('click', function(){
+          settingsdiv.classList.toggle("invisible");
+        });
         
   </script>
 </body>
