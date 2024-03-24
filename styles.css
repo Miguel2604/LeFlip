@@ -12,6 +12,10 @@ html {
 }
 
 body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-image: url("Assets/Images/LebronBackground.jpg");
 }
 
@@ -19,7 +23,20 @@ body{
   display: none;
   }
 
-#mute {
+#settings{
+  position: fixed;
+  z-index: 1;
+}
+
+#settingsdiv{
+  justify-content: center;
+  align-items: center;
+  background-image: url("Assets/Images/SettingsBG.png");
+  width: 1200px;
+  height: 833px;
+}
+
+#mute{
   position: fixed;
   top: 0px;
   right: 0px;
