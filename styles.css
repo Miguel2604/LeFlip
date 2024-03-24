@@ -279,6 +279,18 @@ body{
 }
 
 @media screen and (max-width: 600px) {
+  
+  .credits{
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    color: #FDBB30;
+    font-family: NBACavaliers, serif;
+  }
+
   #settings{
     position: fixed;
     z-index: 1;
@@ -374,7 +386,7 @@ body{
   
   .card{
   position:relative;
-  height: 140px;
+  height: 135px;
   width: 80px;
   }
   .overlay-text-small{
@@ -405,10 +417,6 @@ body{
       font-size: 4em;
     }
   }
-
-  
-
-  
 
 
 }
