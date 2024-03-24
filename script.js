@@ -92,7 +92,7 @@ class MixOrMatch {
     }
     startCountDown() {
         return setInterval(() => {
-            this.timeRemaining--;
+            this.timeRemaining -= 1;
             this.timer.innerText = this.timeRemaining;
             if(this.timeRemaining === 0)
                 this.gameOver();
