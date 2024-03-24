@@ -120,8 +120,11 @@ class MixOrMatch {
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MixOrMatch(100, cards);  
+    let difficulty = localStorage.getItem("difficulty") || '0'; 
+    console.log("Value =" + difficulty);
     
+    let game = new MixOrMatch(difficulty, cards); 
+
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
@@ -133,8 +136,7 @@ function ready() {
             game.flipCard(card);
         });
     });
-
-}   
+}
 
 function victory(){
 

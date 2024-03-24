@@ -21,7 +21,7 @@
   <audio id="victorysound"> 
     <source src="Assets/Audio/comeonman.mp3" type="audio/mp3">
   </audio>
-  <div id="settingsdiv" class="invisible">
+  <div id="settingsdiv" class="invisible" value="12">
     <div id="settingscontainer">
       <div>
         <p>SETTINGS</p>
@@ -301,6 +301,33 @@
           settingsdiv.classList.toggle("invisible");
         });
 
+    var easy = document.getElementById("easy");
+    var medium = document.getElementById("medium");
+    var hard = document.getElementById("hard");
+    var extreme = document.getElementById("extreme");
+      easy.addEventListener('click', function(){
+        settingsdiv.setAttribute("value", "12");
+        localStorage.setItem("difficulty", "12");
+        location.reload();
+      });
+
+      medium.addEventListener('click', function(){
+        settingsdiv.setAttribute("value", "8");
+        localStorage.setItem("difficulty", "8");
+        location.reload();
+      });
+
+      hard.addEventListener('click', function(){
+        settingsdiv.setAttribute("value", "4");
+        localStorage.setItem("difficulty", "4");
+        location.reload();
+      });
+
+      extreme.addEventListener('click', function(){
+        settingsdiv.setAttribute("value", "0");
+        localStorage.setItem("difficulty", "0");
+        location.reload();
+      });
 
         
         
