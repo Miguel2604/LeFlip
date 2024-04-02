@@ -27,6 +27,7 @@ class MixOrMatch {
         this.timeRemaining = totalTime;
     }
 
+
     adjustCardsBasedOnDifficulty(cards, difficulty) {
         let activeCardsCount = 24 - difficulty; 
         cards.forEach((card, index) => {
@@ -88,6 +89,7 @@ class MixOrMatch {
         card2.classList.add('matched');
         this.audioController.match();
         if(this.matchedCards.length === this.cardsArray.length){
+            clearInterval(this.countDown);
             victory();
         }
             
@@ -150,6 +152,7 @@ function ready() {
             game.flipCard(card);
         });
     });
+    
 }
 
 function victory(){
@@ -157,11 +160,57 @@ function victory(){
     let victory = document.getElementById("victory-text");
     var bgm = document.getElementById("bgm")
     var victorySound = document.getElementById("victorysound")
+    let flips = document.getElementById("flips").innerText;
     victory.classList.add('visible');
     bgm.pause();
     victorySound.play();
+    
+
+    let playerName = prompt("Congratulations! You won! Enter your name for the leaderboard:");
+    
+    // Retrieve existing leaderboard from local storage or create a new one if it doesn't exist
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    
+    // Add current player's data to the leaderboard
+    leaderboard.push({ name: playerName, flips: parseInt(flips) });
+    
+    // Sort the leaderboard based on number of flips (ascending order)
+    leaderboard.sort((a, b) => a.flips - b.flips);
+    
+    // Store the updated leaderboard in local storage
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+    
+    // Display leaderboard to the player
+    displayLeaderboard();
+    
+    // Show victory text to the player
+    victory.classList.add('visible');
 
 }
+
+function displayLeaderboard() {
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    let leaderboardHTML = `
+        <div class="leaderboard-content">
+            <h2>Leaderboard</h2>
+            <ol class="leaderboard-list">`;   
+    
+    // Loop through leaderboard data and generate HTML
+    leaderboard.forEach((player, index) => {
+        leaderboardHTML += `<li> ${player.name} - ${player.flips} flips</li>`;
+    });
+    
+    leaderboardHTML += "</ol></div>";
+    
+    // Display leaderboard HTML on the page
+    let leaderboardContainer = document.getElementById("leaderboard");
+    leaderboardContainer.innerHTML = leaderboardHTML;
+    setTimeout(() => {
+        leaderboard.classList.remove('visible-leaderboard');
+    }, 5000); 
+}
+
+
 
 if(document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', ready());

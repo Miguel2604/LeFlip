@@ -1,399 +1,207 @@
-@font-face {
-  font-family: "NBACavaliers";
-  src: url("Assets/Fonts/NBACavaliers.ttf") format("truetype");
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  min-height: 100vh;
-}
-
-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-image: url("Assets/Images/LebronBackground.jpg");
-}
-
-#bgm{
-  display: none;
+  @font-face {
+    font-family: "NBACavaliers";
+    src: url("Assets/Fonts/NBACavaliers.ttf") format("truetype");
   }
 
-#settings{
-  position: fixed;
-  z-index: 1;
-}
-
-#settingsdiv{
-  color: white;
-  font-family: NBACavaliers, serif;
-  font-size: 4em;
-  text-align: center;
-  border-radius: 25px;
-  background-image: url("Assets/Images/SettingsBG.png");
-  width: 1200px;
-  height: 833px;
-  z-index: 10;
-  position: absolute;
-  padding: 0;
-  margin: 0;
-}
-
-#easy:hover{
-  transform: translateY(-2px);
-  background-image: url("Assets/Images/easyhover.png");
-}
-
-#easy:active, #medium:active, #hard:active, #extreme:active{
-  transform: translateY(2px);
-}
-
-#easy{
-  background-image: url("Assets/Images/easy.png");
-}
-
-#medium{
-  background-image: url("Assets/Images/medium.png");
-}
-
-#medium:hover{
-  background-image: url("Assets/Images/mediumhover.png");
-}
-
-#hard{
-  background-image: url("Assets/Images/hard.png");
-}
-
-#hard:hover{
-  background-image: url("Assets/Images/hardhover.png");
-}
-
-#extreme{
-  background-image: url("Assets/Images/extreme.png");
-}
-
-#extreme:hover{
-  background-image: url("Assets/Images/extremehover.png");
-}
-
-#easy, #medium, #hard, #extreme{
-  width: 300px;
-  height: 191px;
-  border: 0;
-}
-
-#settingscontainer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.card.hidden {
-  display: none;
-}
-
-#diffpics{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-.rows{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-}
-.opacity{
-  filter: brightness(30%);
-}
-
-.fullopacity{
-  filter: brightness(100%);
-}
-
-.settingspics{
-  width: 415px;
-  height: 234px;
-}
-
-.invisible{
-  display: none;
-}
-
-#mute, #settings{
-  position: fixed;
-  top: 0px;
-  right: 50px;
-  z-index: 1;
-}
-
-#settings{
-  right:0px;
-}
-
-.page-title {
-  color: #860038;
-  font-family: NBACavaliers, serif;
-  font-weight: normal;
-  text-align: center;
-  font-size: 6em;
-}
-
-.game-info-container {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
-}
-
-.game-info {
-  font-family: NBACavaliers, serif;
-  color: #FDBB30;
-  font-size: 4em;
-}
-
-.game-container {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 10px;
-  margin: 50px;
-  justify-content: center;
-  perspective: 500px;
-}
-
-.card {
-  position: relative;
-  height: 175px;
-  width: 125px;
-}
-
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  backface-visibility: hidden;
-  border-radius: 12px;
-  border-width: 1px;
-  border-style: solid;
-  transition: transform 500ms ease-in-out;
-}
-
-.card.visible .card-back {
-  transform: rotateY(-180deg);
-}
-
-.card.visible .card-front {
-  transform: rotateY(0)
-}
-
-.card.matched .card-value {
-  animation: dance 1s linear infinite 500ms;
-}
-
-.overlay-text {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  color: #FDBB30;
-  font-family: NBACavaliers, serif;
-}
-
-.overlay-text-small {
-  font-size: .3em;
-}
-
-.overlay-text.visible {
-  display: flex;
-  flex-direction: column;
-  animation: overlay-grow 500ms forwards;
-}
-
-@keyframes overlay-grow {
-  from {
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 0;
+  * {
+    box-sizing: border-box;
   }
-  to {
-    background-color: rgba(0, 0, 0, .8);
-    font-size: 10em;
+
+  html {
+    min-height: 100vh;
   }
-}
 
-@keyframes dance {
-  0%, 100%  {
-    transform: rotate(0);
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("Assets/Images/LebronBackground.jpg");
   }
-  25% {
-    transform: rotate(-1deg);
-  }
-  75% {
-    transform: rotate(1deg);
-  }
-}
 
-.card-back {
-  background-color: black;
-  border-color: black;
-}
-
-.card-front {
-  background-color: #041E42;
-  border-color: #333;
-  transform: rotateY(180deg);
-}
-
-.card-value {
-  transition: transform 100ms ease-in-out;
-  transform: scale(.9);
-}
-
-.card-front:hover .card-value {
-  transform: scale(1);
-}
-
-.spider {
-  align-self: flex-start;
-  transform: translateY(-10px);
-  transition: transform 100ms ease-in-out;
-}
-
-.card-back:hover .spider {
-  transform: translateY(0)
-}
-
-@media screen and (max-width: 600px) {
-  
-  .credits{
-    font-size: 20px;
-    line-height: 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    z-index: -1;
-    color: #FDBB30;
-    font-family: NBACavaliers, serif;
-  }
+  #bgm{
+    display: none;
+    }
 
   #settings{
     position: fixed;
     z-index: 1;
   }
-  
+
   #settingsdiv{
     color: white;
     font-family: NBACavaliers, serif;
-    font-size: 50px;
+    font-size: 4em;
     text-align: center;
     border-radius: 25px;
-    background-image: url("Assets/Images/SettingsBGMobile.png");
-    width: 350px;
-    height: 604px;
+    background-image: url("Assets/Images/SettingsBG.png");
+    width: 1200px;
+    height: 833px;
     z-index: 10;
     position: absolute;
     padding: 0;
     margin: 0;
   }
-  
+
   #easy:hover{
     transform: translateY(-2px);
-    background-image: url("Assets/Images/easyhovermobile.png");
+    background-image: url("Assets/Images/easyhover.png");
   }
-  
+
   #easy:active, #medium:active, #hard:active, #extreme:active{
     transform: translateY(2px);
   }
-  
+
   #easy{
-    background-image: url("Assets/Images/easymobile.png");
+    background-image: url("Assets/Images/easy.png");
   }
-  
+
   #medium{
-    background-image: url("Assets/Images/mediummobile.png");
+    background-image: url("Assets/Images/medium.png");
   }
-  
+
   #medium:hover{
-    background-image: url("Assets/Images/mediumhovermobile.png");
+    background-image: url("Assets/Images/mediumhover.png");
   }
-  
+
   #hard{
-    background-image: url("Assets/Images/hardmobile.png");
+    background-image: url("Assets/Images/hard.png");
   }
-  
+
   #hard:hover{
-    background-image: url("Assets/Images/hardhovermobile.png");
+    background-image: url("Assets/Images/hardhover.png");
   }
-  
+
   #extreme{
-    background-image: url("Assets/Images/extrememobile.png");
+    background-image: url("Assets/Images/extreme.png");
   }
-  
+
   #extreme:hover{
-    background-image: url("Assets/Images/extremehovermobile.png");
+    background-image: url("Assets/Images/extremehover.png");
   }
-  
+
   #easy, #medium, #hard, #extreme{
-    width: 150px;
-    height: 95px;
+    width: 300px;
+    height: 191px;
     border: 0;
   }
-  
+
+  #settingscontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .card.hidden {
+    display: none;
+  }
+
+  #diffpics{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .rows{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+  }
+  .opacity{
+    filter: brightness(30%);
+  }
+
+  .fullopacity{
+    filter: brightness(100%);
+  }
+
+  .settingspics{
+    width: 415px;
+    height: 234px;
+  }
+
   .invisible{
     display: none;
   }
-  
-  body{
-    background-image: url("Assets/Images//LeBackgroundPortrait.png");
-    background-size:cover ;
-    background-repeat: no-repeat;
+
+  #mute, #settings{
+    position: fixed;
+    top: 0px;
+    right: 50px;
+    z-index: 1;
   }
 
-  .game-container {
-    grid-template-columns: repeat(4, auto);
+  #settings{
+    right:0px;
+  }
+
+  .page-title {
+    color: #860038;
+    font-family: NBACavaliers, serif;
+    font-weight: normal;
+    text-align: center;
+    font-size: 6em;
   }
 
   .game-info-container {
-    flex-direction: row;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .game-info {
+    font-family: NBACavaliers, serif;
+    color: #FDBB30;
+    font-size: 4em;
+  }
+
+  .game-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+    perspective: 500px;
+  }
+
+  .card {
+    position: relative;
+    height: 175px;
+    width: 125px;
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    transition: transform 500ms ease-in-out;
   }
 
-  .page-title{
-    font-size: 60px;
-    line-height: 70px;
+  .card.visible .card-back {
+    transform: rotateY(-180deg);
   }
 
-  .game-info{
-    font-size: 50px;
-    line-height: 50px;
-    
-  }
-  
-  .card{
-  position:relative;
-  height: 135px;
-  width: 80px;
-  }
-  .overlay-text-small{
-    font-size: 50px;
+  .card.visible .card-front {
+    transform: rotateY(0)
   }
 
-  .overlay-text-visible {
+  .card.matched .card-value {
+    animation: dance 1s linear infinite 500ms;
+  }
+
+  .overlay-text {
     display: none;
     position: fixed;
     top: 0;
@@ -407,6 +215,16 @@ body{
     font-family: NBACavaliers, serif;
   }
 
+  .overlay-text-small {
+    font-size: .3em;
+  }
+
+  .overlay-text.visible {
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+  }
+
   @keyframes overlay-grow {
     from {
       background-color: rgba(0, 0, 0, 0);
@@ -414,10 +232,236 @@ body{
     }
     to {
       background-color: rgba(0, 0, 0, .8);
-      font-size: 4em;
+      font-size: 10em;
     }
   }
 
+  @keyframes dance {
+    0%, 100%  {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(-1deg);
+    }
+    75% {
+      transform: rotate(1deg);
+    }
+  }
 
-}
+  .card-back {
+    background-color: black;
+    border-color: black;
+  }
+
+  .card-front {
+    background-color: #041E42;
+    border-color: #333;
+    transform: rotateY(180deg);
+  }
+
+  .card-value {
+    transition: transform 100ms ease-in-out;
+    transform: scale(.9);
+  }
+
+  .card-front:hover .card-value {
+    transform: scale(1);
+  }
+
+  .spider {
+    align-self: flex-start;
+    transform: translateY(-10px);
+    transition: transform 100ms ease-in-out;
+  }
+
+  .card-back:hover .spider {
+    transform: translateY(0)
+  }
+
+  @media screen and (max-width: 600px) {
+    
+    .credits{
+      font-size: 20px;
+      line-height: 20px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      z-index: -1;
+      color: #FDBB30;
+      font-family: NBACavaliers, serif;
+    }
+
+    #settings{
+      position: fixed;
+      z-index: 1;
+    }
+    
+    #settingsdiv{
+      color: white;
+      font-family: NBACavaliers, serif;
+      font-size: 50px;
+      text-align: center;
+      border-radius: 25px;
+      background-image: url("Assets/Images/SettingsBGMobile.png");
+      width: 350px;
+      height: 604px;
+      z-index: 10;
+      position: absolute;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #easy:hover{
+      transform: translateY(-2px);
+      background-image: url("Assets/Images/easyhovermobile.png");
+    }
+    
+    #easy:active, #medium:active, #hard:active, #extreme:active{
+      transform: translateY(2px);
+    }
+    
+    #easy{
+      background-image: url("Assets/Images/easymobile.png");
+    }
+    
+    #medium{
+      background-image: url("Assets/Images/mediummobile.png");
+    }
+    
+    #medium:hover{
+      background-image: url("Assets/Images/mediumhovermobile.png");
+    }
+    
+    #hard{
+      background-image: url("Assets/Images/hardmobile.png");
+    }
+    
+    #hard:hover{
+      background-image: url("Assets/Images/hardhovermobile.png");
+    }
+    
+    #extreme{
+      background-image: url("Assets/Images/extrememobile.png");
+    }
+    
+    #extreme:hover{
+      background-image: url("Assets/Images/extremehovermobile.png");
+    }
+    
+    #easy, #medium, #hard, #extreme{
+      width: 150px;
+      height: 95px;
+      border: 0;
+    }
+    
+    .invisible{
+      display: none;
+    }
+    
+    body{
+      background-image: url("Assets/Images//LeBackgroundPortrait.png");
+      background-size:cover ;
+      background-repeat: no-repeat;
+    }
+
+    .game-container {
+      grid-template-columns: repeat(4, auto);
+    }
+
+    .game-info-container {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .page-title{
+      font-size: 60px;
+      line-height: 70px;
+    }
+
+    .game-info{
+      font-size: 50px;
+      line-height: 50px;
+      
+    }
+    
+    .card{
+    position:relative;
+    height: 135px;
+    width: 80px;
+    }
+    .overlay-text-small{
+      font-size: 50px;
+    }
+
+    .overlay-text-visible {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      color: #FDBB30;
+      font-family: NBACavaliers, serif;
+    }
+
+    @keyframes overlay-grow {
+      from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+      }
+      to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 4em;
+      }
+    }
+ 
+    .leaderboard {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #FDBB30;
+      font-family: NBACavaliers, serif;
+      font-size: 2em;
+    }
+    
+    .visible-leaderboard {
+      display: flex;
+    }
+    
+    .leaderboard-content {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      font-family: NBACavaliers, serif;
+      color: white;
+    }
+    
+    .leaderboard h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .leaderboard ol {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .leaderboard li {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+
+  }
 
