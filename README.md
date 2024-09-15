@@ -8,4 +8,4 @@ Imagine the excitement of flipping cards, but now imagine those cards are all ab
 
 ---
 
-Play LeFlip now: [https://app-dev-memory-card-game.vercel.app](#)
+Play LeFlip now: [https://lebron-james-game.vercel.app](#)
